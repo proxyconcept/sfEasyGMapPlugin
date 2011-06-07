@@ -30,6 +30,9 @@ function include_map_javascript($gMap)
     $gMap = $gMap->getRawValue();
   }
 
+  // Force locale temporarily to avoid JS code with comma in decimal numbers
+  $locale = setlocale(LC_NUMERIC, 0);
+  setlocale(LC_NUMERIC, 'en_US');
   ?>
   <script type='text/javascript'>
     //<![CDATA[
@@ -37,6 +40,7 @@ function include_map_javascript($gMap)
     //]]>
   </script>
   <?php
+  setlocale(LC_NUMERIC, $locale);
 }
 
 /**
