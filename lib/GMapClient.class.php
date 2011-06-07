@@ -30,6 +30,7 @@ class GMapClient
 
   const API_URL = 'http://maps.google.com/maps/geo?';
   const JS_URL  = 'http://maps.google.com/maps/api/js?sensor=false';
+  const JS_URL_SSL = 'https://maps-api-ssl.google.com/maps/api/js?sensor=false';
 
   /**
    *
@@ -267,7 +268,7 @@ class GMapClient
    */
   public function getGoogleJsUrl($auto_load = true, $language = null, $region = null)
   {
-    $js_url = self::JS_URL;
+    $js_url = sfContext::getInstance()->getRequest()->isSecure() ? self::JS_URL_SSL : self::JS_URL;
 
     if ($language !== null)
     {
