@@ -177,6 +177,7 @@ class GMapClient
       }
       else
       {
+        return null; // no exception as the API key is not required with v3 API
         throw new sfException('No Google Map API key defined in the app.yml file of your application');
       }
     }
